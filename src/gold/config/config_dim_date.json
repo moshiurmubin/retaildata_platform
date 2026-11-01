@@ -1,0 +1,35 @@
+{
+    "source": {
+        "source_name": "silver_sales",
+        "source_table": "retaildata_platform.silver.sales_orders",
+        "date_column": "order_timestamp"
+    },
+
+    "target": {
+        "target_table": "retaildata_platform.gold.dim_date"
+    },
+
+    "transform": {
+        "date_key_format": "yyyyMMdd"
+    },
+
+    "select_columns": [
+        "date_key",
+        "date",
+        "day",
+        "month",
+        "year",
+        "quarter",
+        "week"
+    ],
+
+    "cast_columns": {
+        "date_key": "int",
+        "date": "date",
+        "day": "int",
+        "month": "int",
+        "year": "int",
+        "quarter": "int",
+        "week": "int"
+    }
+}
