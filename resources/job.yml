@@ -415,6 +415,36 @@ resources:
             base_parameters:
 
               path: ../config/config_fact_sales.json
+              
+        - task_key: data_quality
+
+          depends_on:
+
+            - task_key: gold_dim_customer
+
+            - task_key: gold_dim_order
+
+            - task_key: gold_dim_product
+
+            - task_key: gold_dim_date
+
+            - task_key: gold_fact_sales
+
+          run_if: ALL_SUCCESS
+
+          environment_key: platform
+
+          max_retries: 0
+
+          notebook_task:
+
+            notebook_path: ../src/dq/notebooks/run_data_quality.py
+
+            base_parameters:
+
+              path: ../config/config_data_quality.json
+        
+              
 
 
 
